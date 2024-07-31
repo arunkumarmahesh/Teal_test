@@ -1,0 +1,524 @@
+.libPaths(c("/funstorage/renv/mahesar1",.libPaths()))
+
+
+options(rsconnect.max.bundle.files=100000)
+
+
+
+options("repos" = c(getOption("repos"),
+                    NEW_REPO =c("https://rspm.apps.dit-prdocp.novartis.net/exploratory/latest/",
+                                "https://pharmaverse.r-universe.dev",
+                                "https://insightsengineering.r-universe.dev")))
+
+
+
+library(withr, lib.loc = "/funstorage/renv/mahesar1")
+library(remotes, lib.loc = "/funstorage/renv/mahesar1")
+
+# 
+# with_libpaths(new = "/funstorage/renv/mahesar1", remotes::install_github("insightsengineering/teal.reporter"))
+# with_libpaths(new = "/funstorage/renv/mahesar1", remotes::install_github("insightsengineering/teal.code"))
+# with_libpaths(new = "/funstorage/renv/mahesar1", remotes::install_github("insightsengineering/teal.data"))
+# with_libpaths(new = "/funstorage/renv/mahesar1", remotes::install_github("insightsengineering/teal.widgets"))
+# with_libpaths(new = "/funstorage/renv/mahesar1", remotes::install_github("daroczig/logger"))
+# with_libpaths(new = "/funstorage/renv/mahesar1", remotes::install_github("insightsengineering/teal.logger"))
+# with_libpaths(new = "/funstorage/renv/mahesar1", remotes::install_github("insightsengineering/teal.slice"))
+# with_libpaths(new = "/funstorage/renv/mahesar1", remotes::install_github("insightsengineering/teal.transform"))
+# with_libpaths(new = "/funstorage/renv/mahesar1", remotes::install_github("insightsengineering/teal"))
+# with_libpaths(new = "/funstorage/renv/mahesar1", remotes::install_github("r-lib/rlang"))
+# with_libpaths(new = "/funstorage/renv/mahesar1", remotes::install_github("insightsengineering/tern.gee"))
+# with_libpaths(new = "/funstorage/renv/mahesar1", remotes::install_github("insightsengineering/tern"))
+# with_libpaths(new = "/funstorage/renv/mahesar1", remotes::install_github("openpharma/mmrm"))
+# with_libpaths(new = "/funstorage/renv/mahesar1", remotes::install_github("insightsengineering/tern.mmrm"))
+# with_libpaths(new = "/funstorage/renv/mahesar1", remotes::install_github("insightsengineering/rlistings"))
+# with_libpaths(new = "/funstorage/renv/mahesar1", remotes::install_github("shosaco/vistime"))
+# with_libpaths(new = "/funstorage/renv/mahesar1", remotes::install_github("insightsengineering/teal.modules.clinical"))
+# with_libpaths(new = "/funstorage/renv/mahesar1", remotes::install_github("shinyTree/shinyTree"))
+# with_libpaths(new = "/funstorage/renv/mahesar1", remotes::install_github("insightsengineering/teal.modules.general"))
+# with_libpaths(new = "/funstorage/renv/mahesar1", remotes::install_github("insightsengineering/nestcolor"))
+# with_libpaths(new = "/funstorage/renv/mahesar1", remotes::install_github("renkun-ken/formattable"))
+# with_libpaths(new = "/funstorage/renv/mahesar1", remotes::install_github("wlandau/txtq"))
+# with_libpaths(new = "/funstorage/renv/mahesar1", remotes::install_github("ProjectMOSAIC/mosaic"))
+# with_libpaths(new = "/funstorage/renv/mahesar1", remotes::install_github("ProjectMOSAIC/mosaicData"))
+# with_libpaths(new = "/funstorage/renv/mahesar1", remotes::install_github("ProjectMOSAIC/mosaicCore"))
+# with_libpaths(new = "/funstorage/renv/mahesar1", remotes::install_github("pharmaverse/admiral"))
+# with_libpaths(new = "/funstorage/renv/mahesar1", remotes::install_github("r-lib/remotes"))
+# with_libpaths(new = "/funstorage/renv/mahesar1", remotes::install_github("yihui/formatR"))
+# with_libpaths(new = "/funstorage/renv/mahesar1", remotes::install_github("htmlwidgets/sparkline"))
+# with_libpaths(new = "/funstorage/renv/mahesar1", remotes::install_github("rstudio/rsconnect"))
+# with_libpaths(new = "/funstorage/renv/mahesar1", remotes::install_github("rstudio/shinythemes"))
+# with_libpaths(new = "/funstorage/renv/mahesar1", remotes::install_github("baddstats/goftest"))
+
+
+
+library(htmltools, lib.loc = "/funstorage/renv/mahesar1")
+library(rlang, lib.loc = "/funstorage/renv/mahesar1")
+library(shiny, lib.loc = "/funstorage/renv/mahesar1")
+library(DT, lib.loc = "/funstorage/renv/mahesar1")
+library(admiral, lib.loc = "/funstorage/renv/mahesar1")
+library(checkmate, lib.loc = "/funstorage/renv/mahesar1")
+library(formatters, lib.loc = "/funstorage/renv/mahesar1")
+library(rtables, lib.loc = "/funstorage/renv/mahesar1")
+library(tern, lib.loc = "/funstorage/renv/mahesar1")
+library(teal.widgets, lib.loc = "/funstorage/renv/mahesar1") 
+library(teal.logger, lib.loc = "/funstorage/renv/mahesar1") 
+library(teal.code, lib.loc = "/funstorage/renv/mahesar1") 
+library(teal.reporter , lib.loc = "/funstorage/renv/mahesar1")
+library(teal.data, lib.loc = "/funstorage/renv/mahesar1") 
+library(teal.slice, lib.loc = "/funstorage/renv/mahesar1") 
+library(teal.transform, lib.loc = "/funstorage/renv/mahesar1") 
+library(teal, lib.loc = "/funstorage/renv/mahesar1") 
+library(teal.modules.clinical, lib.loc = "/funstorage/renv/mahesar1")
+library(teal.modules.general, lib.loc = "/funstorage/renv/mahesar1")
+library(dplyr, lib.loc = "/funstorage/renv/mahesar1")
+library(nestcolor, lib.loc = "/funstorage/renv/mahesar1") 
+library(ggplot2, lib.loc = "/funstorage/renv/mahesar1")
+library(tibble, lib.loc = "/funstorage/renv/mahesar1")
+library(haven, lib.loc = "/funstorage/renv/mahesar1")
+library(sparkline, lib.loc = "/funstorage/renv/mahesar1")
+library(logger, lib.loc = "/funstorage/renv/mahesar1")
+library(vistime, lib.loc = "/funstorage/renv/mahesar1")
+library(shinyTree, lib.loc = "/funstorage/renv/mahesar1")
+library(formattable, lib.loc = "/funstorage/renv/mahesar1")
+library(txtq, lib.loc = "/funstorage/renv/mahesar1")
+library(mosaic, lib.loc = "/funstorage/renv/mahesar1")
+library(mosaicData, lib.loc = "/funstorage/renv/mahesar1")
+library(formatR , lib.loc = "/funstorage/renv/mahesar1")
+library(rsconnect, lib.loc = "/funstorage/renv/mahesar1")
+library(shinythemes, lib.loc = "/funstorage/renv/mahesar1")
+library(teal, lib.loc = "/funstorage/renv/mahesar1")
+library(goftest, lib.loc = "/funstorage/renv/mahesar1")
+
+source("gps.R", local = TRUE)
+
+user = tolower(Sys.getenv('LOGNAME')) #521 of users
+
+project_list <- list_contents(user, modifier = '| egrep -i \"^C\"')
+
+root_path <-  paste0("/view/", user,"_view","/vob/")
+
+
+data_mod <- teal_data_module(
+  ui = function(id) {
+    ns <- NS(id)
+    fluidPage(theme = shinytheme("paper"),
+              sidebarLayout(
+                sidebarPanel( 
+                  list(
+                    shiny::selectizeInput(
+                      inputId = ns("project"),
+                      label   = 'Select Project',
+                      choices = project_list),
+                    
+                    selectizeInput(
+                      inputId = ns("study"),
+                      label   = 'Select Study',
+                      choices = NULL),
+                    
+                    selectizeInput(
+                      inputId = ns("rep_activity"),
+                      label   = 'Select Reporting Activity',
+                      choices = NULL),
+                    
+                    selectizeInput(
+                      inputId = ns("reports_folder"),
+                      label   = 'Select Folder',
+                      choices = NULL),
+                    
+                    selectizeInput(
+                      inputId = ns("dataset"),
+                      label   = 'Select dataset',
+                      choices = NULL,
+                      multiple = TRUE),
+                    actionButton(ns("submit"), "Submit")
+                  )
+                ),
+                mainPanel(
+                  img(src='DEA.png', height="50%", width="90%"),
+                  img(src='Novartis.png', height="50%", width="80%"))
+              )
+    )
+  },
+  
+  server = function(id) {
+    moduleServer(id, function(input, output, session) {
+      observeEvent(input$project, {
+        shinyjs::runjs(sprintf( " var projectElement = document.querySelector('#custom-js-selection .project'); projectElement.textContent = 'project - %s'; ", input$project ) )
+        updateSelectInput(
+          inputId = "study",
+          choices = list_contents(user, input$project, modifier = '| egrep -i \"^C\"')
+        )
+      })
+      
+      fruit_files <- function(project, study, rep_activity, reports_folder, modifier) {
+        files <- list.files(
+          path = file.path(
+            root_path,
+            project,
+            study,
+            rep_activity,
+            reports_folder
+          ),
+          full.names = TRUE
+        )
+        fruit_name <- gsub("\\.[^.]+$", "", basename(files))
+        
+        setNames(files, fruit_name)
+      }
+      
+      observeEvent(input$study, {
+        shinyjs::runjs(sprintf( " var studyElement = document.querySelector('#custom-js-selection .study'); studyElement.textContent = 'study - %s'; ", input$study ) )
+        updateSelectInput(
+          inputId = "rep_activity",
+          choices = list_contents(user, input$project, input$study,
+                                  modifier = '| egrep \"(csr|ia|dmc|report)(_[0-9]$|$)\"')
+        )
+      })
+      
+      observeEvent(input$rep_activity, {
+        shinyjs::runjs(sprintf( " var rep_activityElement = document.querySelector('#custom-js-selection .rep_activity'); rep_activityElement.textContent = 'rep_activity - %s'; ", input$rep_activity ) )
+        
+        updateSelectInput(
+          inputId = "reports_folder",
+          choices = list_contents(user, input$project, input$study, input$rep_activity,
+                                  modifier = '| egrep \"(data_a|data_s|_data)\"')
+        )
+      })
+      
+      observeEvent(input$reports_folder, {
+        shinyjs::runjs(sprintf( " var reports_folderElement = document.querySelector('#custom-js-selection .reports_folder'); reports_folderElement.textContent = 'reports_folder - %s'; ", input$reports_folder ) )
+        
+        updateSelectInput(
+          inputId = "dataset",
+          choices = names(fruit_files(input$project, input$study, input$rep_activity, input$reports_folder))
+        )
+      })
+      
+      
+      eventReactive(input$submit, {
+        shinyjs::runjs(sprintf( " var datasetElement = document.querySelector('#custom-js-selection .dataset'); datasetElement.textContent = 'dataset - %s'; ", input$dataset ) )
+        data_obj <- teal_data()
+        for (fruit in input$dataset) {
+          data_obj <- within(
+            data_obj,
+            {
+              selected_data <- read_sas(fruit_file)
+            },
+            fruit_file = fruit_files(input$project, input$study, input$rep_activity, input$reports_folder)[[fruit]]
+          )
+        }
+        datanames(data_obj) <- "selected_data"
+        join_keys(data_obj) <- default_cdisc_join_keys[datanames(data_obj)]
+        data_obj
+      })
+    })
+  }
+)
+#fact_vars_adsl <- names(Filter(isTRUE, sapply("selected_data", is.factor)))
+vars <- choices_selected(variable_choices("selected_data"))
+
+app <- init(
+  data = data_mod,
+  module = list(
+    tm_t_pp_basic_info(    # Basic patient
+      label = "Basic Info",
+      dataname = "selected_data",
+      patient_col = "USUBJID",
+      vars = choices_selected(
+        choices = variable_choices("selected_data")
+      )
+    ),
+    tm_t_crosstable(
+      label = "Cross Table",          # Cross table
+      x = data_extract_spec(
+        dataname = "selected_data",
+        select = select_spec(
+          label = "Select variable:",
+          choices = variable_choices("selected_data", subset = function(data) {
+            idx <- !vapply(data, inherits, logical(1), c("Date", "POSIXct", "POSIXlt"))
+            return(names(data)[idx])
+          }),
+          #selected = "selected_data",
+          multiple = TRUE,
+          ordered = TRUE,
+          fixed = FALSE
+        )
+      ),
+      y = data_extract_spec(
+        dataname = "selected_data",
+        select = select_spec(
+          label = "Select variable:",
+          choices = variable_choices("selected_data", subset = function(data) {
+            idx <- vapply(data, is.factor, logical(1))
+            return(names(data)[idx])
+          }),
+          #selected =  "selected_data",
+          multiple = FALSE,
+          fixed = FALSE
+        )
+      ),
+      basic_table_args = basic_table_args(
+        subtitles = "Table generated by Crosstable Module"
+      )
+    ),
+    
+    tm_outliers(                            #outlier analysis
+      outlier_var = list(
+        data_extract_spec(
+          dataname =  "selected_data",
+          select = select_spec(
+            label = "Select variable:",
+            choices = variable_choices("selected_data"),
+            multiple = FALSE,
+            fixed = FALSE
+          )
+        )
+      ),
+      # categorical_var = list(
+      #   data_extract_spec(
+      #     dataname = "selected_data",
+      #     filter = filter_spec(
+      #       vars = vars,
+      #       choices = value_choices("selected_data"),
+      #       selected = value_choices("selected_data"),
+      #       multiple = TRUE
+      #     )
+      #   )
+      # ),
+      ggplot2_args = list(
+        ggplot2_args(
+          labs = list(subtitle = "Plot generated by Outliers Module")
+        )
+      )
+    ),
+    
+    tm_g_scatterplot(                               # Scatterplot
+      label = "Scatterplot",
+      x = data_extract_spec(
+        dataname = "selected_data",
+        select = select_spec(
+          label = "Select variable:",
+          choices = variable_choices("selected_data"),
+          multiple = FALSE,
+          fixed = FALSE
+        )
+      ),
+      y = data_extract_spec(
+        dataname = "selected_data",
+        select = select_spec(
+          label = "Select variable:",
+          choices = variable_choices("selected_data"),
+          multiple = FALSE,
+          fixed = FALSE
+        )
+      ),
+      color_by = data_extract_spec(
+        dataname = "selected_data",
+        select = select_spec(
+          label = "Select variable:",
+          choices = variable_choices(
+            "selected_data"
+          ),
+          multiple = FALSE,
+          fixed = FALSE
+        )
+      ),
+      size_by = data_extract_spec(
+        dataname = "selected_data",
+        select = select_spec(
+          label = "Select variable:",
+          choices = variable_choices("selected_data"),
+          multiple = FALSE,
+          fixed = FALSE
+        )
+      ),
+      row_facet = data_extract_spec(
+        dataname = "selected_data",
+        select = select_spec(
+          label = "Select variable:",
+          choices = variable_choices("selected_data"),
+          multiple = FALSE,
+          fixed = FALSE
+        )
+      ),
+      col_facet = data_extract_spec(
+        dataname = "selected_data",
+        select = select_spec(
+          label = "Select variable:",
+          choices = variable_choices("selected_data"),
+          multiple = FALSE,
+          fixed = FALSE
+        )
+      ),
+      ggplot2_args = ggplot2_args(
+        labs = list(subtitle = "Plot generated by Scatterplot Module")
+      )
+    ),
+      tm_g_scatterplotmatrix(  #Scatter plot Matrix
+      label = "Scatterplot matrix",
+      variables = list(
+        data_extract_spec(
+          dataname = "selected_data",
+          select = select_spec(
+            label = "Select variables:",
+            choices = variable_choices("selected_data"),
+            #selected = c("AGE", "RACE", "SEX"),
+            multiple = TRUE,
+            ordered = TRUE,
+            fixed = FALSE
+          )
+        )
+      )
+    ),
+   
+   
+    
+    tm_g_bivariate(   # Uni-variate and bivariate analysis
+      x = data_extract_spec(
+        dataname = "selected_data",
+        select = select_spec(
+          label = "Select variable:",
+          choices = variable_choices("selected_data"),
+          #selected = "AGE",
+          fixed = FALSE
+        )
+      ),
+      y = data_extract_spec(
+        dataname = "selected_data",
+        select = select_spec(
+          label = "Select variable:",
+          choices = variable_choices("selected_data"),
+          #selected = "SEX",
+          multiple = FALSE,
+          fixed = FALSE
+        )
+      ),
+      row_facet = data_extract_spec(
+        dataname = "selected_data",
+        select = select_spec(
+          label = "Select variable:",
+          choices = variable_choices("selected_data"),
+          #selected = "ARM",
+          fixed = FALSE
+        )
+      ),
+      col_facet = data_extract_spec(
+        dataname = "selected_data",
+        select = select_spec(
+          label = "Select variable:",
+          choices = variable_choices("selected_data"),
+          #selected = "COUNTRY",
+          fixed = FALSE
+        )
+      ),
+      ggplot2_args = ggplot2_args(
+        labs = list(subtitle = "Plot generated by Bivariate Module")
+      )
+    ),
+    
+    tm_g_response(
+      label = "Response Plots",     #Response plot [only factor variables]
+      response = data_extract_spec(
+        dataname = "selected_data",
+        select = select_spec(
+          label = "Select variable:",
+          choices = variable_choices("selected_data"),
+          #selected = "BMRKR2",
+          multiple = FALSE,
+          fixed = FALSE
+        )
+      ),
+      x = data_extract_spec(
+        dataname = "selected_data",
+        select = select_spec(
+          label = "Select variable:",
+          choices = variable_choices("selected_data"),
+          #selected = "RACE",
+          multiple = FALSE,
+          fixed = FALSE
+        )
+      ),
+      ggplot2_args = ggplot2_args(
+        labs = list(subtitle = "Plot generated by Response Module")
+      )
+    ),
+  
+      
+    tm_a_regression(                 # Regression Plot
+      label = "Regression",
+      response = data_extract_spec(
+        dataname = "selected_data",
+        select = select_spec(
+          label = "Select variable:",
+          choices = variable_choices("selected_data"),
+          multiple = FALSE,
+          fixed = FALSE
+        )
+      ),
+      regressor = data_extract_spec(
+        dataname = "selected_data",
+        select = select_spec(
+          label = "Select variables:",
+          choices = variable_choices("selected_data"),
+          multiple = FALSE,
+          fixed = FALSE
+        )
+      ),
+      ggplot2_args = ggplot2_args(
+        labs = list(subtitle = "Plot generated by Regression Module")
+      )
+    ),
+    
+    tm_a_pca(                   #prinicpal component Analysis
+      "PCA",
+      dat = data_extract_spec(
+        dataname = "selected_data",
+        select = select_spec(
+          choices = variable_choices(
+            "selected_data"
+          ),
+          multiple = TRUE
+        ),
+        filter = NULL
+      ),
+      ggplot2_args = ggplot2_args(
+        labs = list(subtitle = "Plot generated by PCA Module")
+      )
+    )
+ ),
+  title = "Module 2: Data Exploratory Application",
+  header = tags$head(
+    tags$h3("Module 2: Data Exploratory Application"),
+    tags$style(HTML('
+      .simple_report_button[title="Download"] {
+        display:none
+      }
+      a[id$="download_data_prev"] {
+        display:none
+      }
+      button[id$="downbutton-downl"] {
+        display:none
+      }
+       button[id$="rcode-button"] {
+        display:none
+       }
+        button[id$="warning-button"] {
+        display:none
+      }
+
+    '))
+  ),
+  footer = tags$h4("Developed by SPACoE", tags$br(),
+                   tags$a(href = "https://rsconnect-prod.dit.eu.novartis.net/NDEA-User-Guide/", "User-Guide",target="_blank"), tags$br(),
+                   tags$div( id = "custom-js-selection", 
+                             tags$div( class = "project", "project - " ), 
+                             tags$div( class = "study", "study - " ),
+                             tags$div( class = "rep_activity", "rep_activity - " ),
+                             tags$div( class = "reports_folder", "reports_folder - " ),
+                             tags$div( class = "dataset", "dataset - " )))
+)
+
+#source("tags.R", local = TRUE)
+
+
+shinyApp(app$ui, app$server)
