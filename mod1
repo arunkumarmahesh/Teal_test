@@ -1,0 +1,297 @@
+.libPaths(c("/funstorage/renv/mahesar1",.libPaths()))
+
+
+options(rsconnect.max.bundle.files=100000)
+
+
+
+options("repos" = c(getOption("repos"),
+                    NEW_REPO =c("https://rspm.apps.dit-prdocp.novartis.net/exploratory/latest/",
+                                "https://pharmaverse.r-universe.dev",
+                                "https://insightsengineering.r-universe.dev")))
+
+
+
+library(withr, lib.loc = "/funstorage/renv/mahesar1")
+library(remotes, lib.loc = "/funstorage/renv/mahesar1")
+
+# 
+# with_libpaths(new = "/funstorage/renv/mahesar1", remotes::install_github("insightsengineering/teal.reporter"))
+# with_libpaths(new = "/funstorage/renv/mahesar1", remotes::install_github("insightsengineering/teal.code"))
+# with_libpaths(new = "/funstorage/renv/mahesar1", remotes::install_github("insightsengineering/teal.data"))
+# with_libpaths(new = "/funstorage/renv/mahesar1", remotes::install_github("insightsengineering/teal.widgets"))
+# with_libpaths(new = "/funstorage/renv/mahesar1", remotes::install_github("daroczig/logger"))
+# with_libpaths(new = "/funstorage/renv/mahesar1", remotes::install_github("insightsengineering/teal.logger"))
+# with_libpaths(new = "/funstorage/renv/mahesar1", remotes::install_github("insightsengineering/teal.slice"))
+# with_libpaths(new = "/funstorage/renv/mahesar1", remotes::install_github("insightsengineering/teal.transform"))
+# with_libpaths(new = "/funstorage/renv/mahesar1", remotes::install_github("insightsengineering/teal"))
+# with_libpaths(new = "/funstorage/renv/mahesar1", remotes::install_github("r-lib/rlang"))
+# with_libpaths(new = "/funstorage/renv/mahesar1", remotes::install_github("insightsengineering/tern.gee"))
+# with_libpaths(new = "/funstorage/renv/mahesar1", remotes::install_github("insightsengineering/tern"))
+# with_libpaths(new = "/funstorage/renv/mahesar1", remotes::install_github("openpharma/mmrm"))
+# with_libpaths(new = "/funstorage/renv/mahesar1", remotes::install_github("insightsengineering/tern.mmrm"))
+# with_libpaths(new = "/funstorage/renv/mahesar1", remotes::install_github("insightsengineering/rlistings"))
+# with_libpaths(new = "/funstorage/renv/mahesar1", remotes::install_github("shosaco/vistime"))
+# with_libpaths(new = "/funstorage/renv/mahesar1", remotes::install_github("insightsengineering/teal.modules.clinical"))
+# with_libpaths(new = "/funstorage/renv/mahesar1", remotes::install_github("shinyTree/shinyTree"))
+# with_libpaths(new = "/funstorage/renv/mahesar1", remotes::install_github("insightsengineering/teal.modules.general"))
+# with_libpaths(new = "/funstorage/renv/mahesar1", remotes::install_github("insightsengineering/nestcolor"))
+# with_libpaths(new = "/funstorage/renv/mahesar1", remotes::install_github("renkun-ken/formattable"))
+# with_libpaths(new = "/funstorage/renv/mahesar1", remotes::install_github("wlandau/txtq"))
+# with_libpaths(new = "/funstorage/renv/mahesar1", remotes::install_github("ProjectMOSAIC/mosaic"))
+# with_libpaths(new = "/funstorage/renv/mahesar1", remotes::install_github("ProjectMOSAIC/mosaicData"))
+# with_libpaths(new = "/funstorage/renv/mahesar1", remotes::install_github("ProjectMOSAIC/mosaicCore"))
+# with_libpaths(new = "/funstorage/renv/mahesar1", remotes::install_github("pharmaverse/admiral"))
+# with_libpaths(new = "/funstorage/renv/mahesar1", remotes::install_github("r-lib/remotes"))
+# with_libpaths(new = "/funstorage/renv/mahesar1", remotes::install_github("yihui/formatR"))
+# with_libpaths(new = "/funstorage/renv/mahesar1", remotes::install_github("htmlwidgets/sparkline"))
+# with_libpaths(new = "/funstorage/renv/mahesar1", remotes::install_github("rstudio/rsconnect"))
+# with_libpaths(new = "/funstorage/renv/mahesar1", remotes::install_github("rstudio/shinythemes"))
+# 
+
+
+
+library(htmltools, lib.loc = "/funstorage/renv/mahesar1")
+library(rlang, lib.loc = "/funstorage/renv/mahesar1")
+library(shiny, lib.loc = "/funstorage/renv/mahesar1")
+library(DT, lib.loc = "/funstorage/renv/mahesar1")
+library(admiral, lib.loc = "/funstorage/renv/mahesar1")
+library(checkmate, lib.loc = "/funstorage/renv/mahesar1")
+library(formatters, lib.loc = "/funstorage/renv/mahesar1")
+library(rtables, lib.loc = "/funstorage/renv/mahesar1")
+library(tern, lib.loc = "/funstorage/renv/mahesar1")
+library(teal.widgets, lib.loc = "/funstorage/renv/mahesar1") 
+library(teal.logger, lib.loc = "/funstorage/renv/mahesar1") 
+library(teal.code, lib.loc = "/funstorage/renv/mahesar1") 
+library(teal.reporter , lib.loc = "/funstorage/renv/mahesar1")
+library(teal.data, lib.loc = "/funstorage/renv/mahesar1") 
+library(teal.slice, lib.loc = "/funstorage/renv/mahesar1") 
+library(teal.transform, lib.loc = "/funstorage/renv/mahesar1") 
+library(teal, lib.loc = "/funstorage/renv/mahesar1") 
+library(teal.modules.clinical, lib.loc = "/funstorage/renv/mahesar1")
+library(teal.modules.general, lib.loc = "/funstorage/renv/mahesar1")
+library(dplyr, lib.loc = "/funstorage/renv/mahesar1")
+library(nestcolor, lib.loc = "/funstorage/renv/mahesar1") 
+library(ggplot2, lib.loc = "/funstorage/renv/mahesar1")
+library(tibble, lib.loc = "/funstorage/renv/mahesar1")
+library(haven, lib.loc = "/funstorage/renv/mahesar1")
+library(sparkline, lib.loc = "/funstorage/renv/mahesar1")
+library(logger, lib.loc = "/funstorage/renv/mahesar1")
+library(vistime, lib.loc = "/funstorage/renv/mahesar1")
+library(shinyTree, lib.loc = "/funstorage/renv/mahesar1")
+library(formattable, lib.loc = "/funstorage/renv/mahesar1")
+library(txtq, lib.loc = "/funstorage/renv/mahesar1")
+library(mosaic, lib.loc = "/funstorage/renv/mahesar1")
+library(mosaicData, lib.loc = "/funstorage/renv/mahesar1")
+library(formatR , lib.loc = "/funstorage/renv/mahesar1")
+library(rsconnect, lib.loc = "/funstorage/renv/mahesar1")
+library(shinythemes, lib.loc = "/funstorage/renv/mahesar1")
+library(teal, lib.loc = "/funstorage/renv/mahesar1")
+source("gps.R", local = TRUE)
+
+user = tolower(Sys.getenv('LOGNAME')) #521 of users
+
+project_list <- list_contents(user, modifier = '| egrep -i \"^C\"')
+
+root_path <-  paste0("/view/", user,"_view","/vob/")
+
+
+data_mod <- teal_data_module(
+  ui = function(id) {
+    ns <- NS(id)
+    fluidPage(theme = shinytheme("paper"),
+              sidebarLayout(
+                sidebarPanel( 
+                  list(
+                    shiny::selectizeInput(
+                      inputId = ns("project"),
+                      label   = 'Select Project',
+                      choices = project_list),
+                    
+                    selectizeInput(
+                      inputId = ns("study"),
+                      label   = 'Select Study',
+                      choices = NULL),
+                    
+                    selectizeInput(
+                      inputId = ns("rep_activity"),
+                      label   = 'Select Reporting Activity',
+                      choices = NULL),
+                    
+                    selectizeInput(
+                      inputId = ns("reports_folder"),
+                      label   = 'Select Folder',
+                      choices = NULL),
+                    
+                    selectizeInput(
+                      inputId = ns("dataset"),
+                      label   = 'Select dataset',
+                      choices = NULL,
+                      multiple = TRUE),
+                    actionButton(ns("submit"), "Submit")
+                  )
+                ),
+                mainPanel(
+                  img(src='DEA.png', height="60%", width="65%"),
+                  img(src='Novartis.png', height="20%", width="60%"))
+              )
+    )
+  },
+  
+  server = function(id) {
+    moduleServer(id, function(input, output, session) {
+      observeEvent(input$project, {
+        shinyjs::runjs(sprintf( " var projectElement = document.querySelector('#custom-js-selection .project'); projectElement.textContent = 'project - %s'; ", input$project ) )
+        updateSelectInput(
+          inputId = "study",
+          choices = list_contents(user, input$project, modifier = '| egrep -i \"^C\"')
+        )
+      })
+      
+      fruit_files <- function(project, study, rep_activity, reports_folder, modifier) {
+        files <- list.files(
+          path = file.path(
+            root_path,
+            project,
+            study,
+            rep_activity,
+            reports_folder
+          ),
+          full.names = TRUE
+        )
+        fruit_name <- gsub("\\.[^.]+$", "", basename(files))
+        
+        setNames(files, fruit_name)
+      }
+      
+      observeEvent(input$study, {
+        shinyjs::runjs(sprintf( " var studyElement = document.querySelector('#custom-js-selection .study'); studyElement.textContent = 'study - %s'; ", input$study ) )
+        updateSelectInput(
+          inputId = "rep_activity",
+          choices = list_contents(user, input$project, input$study,
+                                  modifier = '| egrep \"(csr|ia|dmc|report)(_[0-9]$|$)\"')
+        )
+      })
+      
+      observeEvent(input$rep_activity, {
+        shinyjs::runjs(sprintf( " var rep_activityElement = document.querySelector('#custom-js-selection .rep_activity'); rep_activityElement.textContent = 'rep_activity - %s'; ", input$rep_activity ) )
+        
+        updateSelectInput(
+          inputId = "reports_folder",
+          choices = list_contents(user, input$project, input$study, input$rep_activity,
+                                  modifier = '| egrep \"(data_a|data_s|_data)\"')
+        )
+      })
+      
+      observeEvent(input$reports_folder, {
+        shinyjs::runjs(sprintf( " var reports_folderElement = document.querySelector('#custom-js-selection .reports_folder'); reports_folderElement.textContent = 'reports_folder - %s'; ", input$reports_folder ) )
+        
+        updateSelectInput(
+          inputId = "dataset",
+          choices = names(fruit_files(input$project, input$study, input$rep_activity, input$reports_folder))
+        )
+      })
+      
+      
+      eventReactive(input$submit, {
+        data_obj <- teal_data()
+        for (fruit in input$dataset) {
+          data_obj <- within(
+            data_obj,
+            fruit <- read_sas(fruit_file),
+            fruit = as.name(fruit),
+            fruit_file = fruit_files(input$project, input$study, input$rep_activity, input$reports_folder)[[fruit]]
+          )
+        }
+        datanames(data_obj) <- input$dataset
+        data_obj
+      })
+    })
+  }
+)
+
+
+
+
+
+# mod1 <- tm_g_scatterplotmatrix(
+#   label = "Single wide dataset",
+#   variables = data_extract_spec(
+#     dataname = 'adsl',
+#     select = select_spec(
+#       label = "Select variables:",
+#       choices = variable_choices(c("AGE", "RACE", "SEX")),
+#       selected = c("AGE", "RACE", "SEX"),
+#       multiple = TRUE,
+#       fixed = FALSE,
+#       ordered = TRUE
+#     )
+#   )
+# )
+
+app <- init(
+  data = data_mod,
+  module = list(
+    teal.modules.general::tm_front_page(
+      header_text = c(
+        "Exploratory Application" = "Build for exploratory analysis within a trial, could be used by CTT teams",
+        "GxP compliance (Yes/NO): NO" = "Not a valided application"
+      ),
+      additional_tags = HTML("Any issues please raise a ticket in prada: go/prada"),
+      footnotes = c("Project Manager:" = "Laurent le Renard", "Project Lead:" = "Arun Kumar Mahesh")
+    ),
+    teal.modules.general::tm_data_table(),
+    teal.modules.general::tm_missing_data(),
+    teal.modules.general::tm_variable_browser(),
+    teal.modules.general::tm_front_page(
+      label = "FAQs",
+      header_text = c(
+        "Q) What is DEA" = "A) DEA stands for Data Exploratory Aplication",
+        "Q) Is it a GxP compliance app:" = "A) No",
+        "Q) How to Login into the app" = "A) Login using Novartis 5-2-1 credentials",
+        "Q) Any Training required to access the app" = "A) Please complete DaVinci consumer role trainings to access the app",
+        "Q) Where to get training details" = "A) Type go/prada in microsoft edge brower and click onboarding to DaVinci or GPS and follow as instructed",
+        "Q) How to raise a ticket after completing training" = "A) Type go/davinisr fill details and attach your training certificate and raise a ticket",
+        "Q) Tentative timeline to get access after raising a ticket" = "A) 24-48 hrs",
+        "Q) Do we have any user-guide for this app" = "A) Yes click on first tab and explore how to navigate through this app",
+        "Q) Whom do we reach out if we have any issues while exploring the app" = "A) Please raise a ticket visiting go/prada and click support or refer user-guide"
+        )
+    )
+    
+    #mod1
+  ),
+  title = "Module 1: Data Exploratory Application",
+  header = tags$head(
+    tags$h3("Module 1: Data Exploratory Application"),
+               tags$style(HTML('
+      .simple_report_button[title="Download"] {
+        display:none
+      }
+      a[id$="download_data_prev"] {
+        display:none
+      }
+      button[id$="downbutton-downl"] {
+        display:none
+      }
+       button[id$="rcode-button"] {
+        display:none
+       }
+        button[id$="warning-button"] {
+        display:none
+      }
+
+    '))
+    ),
+  footer = tags$h4("Developed by SPACoE", tags$br(),
+                   tags$a(href = "https://rsconnect-prod.dit.eu.novartis.net/NDEA-User-Guide/", "User-Guide",target="_blank"), tags$br(),
+                   tags$div( id = "custom-js-selection", 
+                             tags$div( class = "project", "project - " ), 
+                             tags$div( class = "study", "study - " ),
+                             tags$div( class = "rep_activity", "rep_activity - " ),
+                             tags$div( class = "reports_folder", "reports_folder - " )))
+)
+
+#source("tags.R", local = TRUE)
+
+
+shinyApp(app$ui, app$server)
